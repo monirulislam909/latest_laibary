@@ -2,9 +2,9 @@
 @section('main')
 <!-- Main Wrapper -->
         <div class="main-wrapper">
-		
-			
-			
+
+
+
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -14,20 +14,16 @@
 						<div class="row">
 							<div class="col">
 								<h3 class="page-title">ALL Students</h3>
-								@if (session('success'))
-									
-								<div class="alert alert-success">{{session('success')}}</div>
-									
-								@endif
+								@include("layouts.components.alert")
 							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
-					
+
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
-								
+
 								<div class="card-body">
 
 									<div class="table-responsive">
@@ -46,7 +42,7 @@
 											</thead>
 											<tbody>
                                                 @foreach ($data as $book )
-                                                    
+
 												<tr>
 													<td>{{$loop->iteration}}</td>
 													<td>{{$book->title}}</td>
@@ -58,20 +54,20 @@
                                                       <img src="{{ asset('bookPhoto/'.$book->cover) }}" alt="" width="60">
                                                     </td>
 													<td>
-                                                      <a class="btn btn-success" href="{{ route('book.show',$book->id) }}">view</a>
-                                                      <a class="btn btn-warning" href="{{ route('book.edit',$book->id) }}">edit</a>
+                                                      <a class="btn btn-success" href="{{ route('book.show',$book->id) }}"><i class="fa fa-eye"></i></a>
+                                                      <a class="btn btn-warning" href="{{ route('book.edit',$book->id) }}"><i class="fa fa-edit"></i></a>
                                                       <div class="d-inline-block ">
 														<form action="{{route('book.destroy',$book->id) }}" method="POST">
 															@csrf
 															@method('DELETE')
 
-															<button class="btn btn-danger" type="submit">delete</button>
+															<button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
 														</form>
                                                       </div>
                                                     </td>
 												</tr>
                                                 @endforeach
-								
+
 											</tbody>
 										</table>
 									</div>
@@ -79,12 +75,12 @@
 							</div>
 						</div>
 					</div>
-				
-				</div>			
+
+				</div>
 			</div>
 			<!-- /Main Wrapper -->
-		
+
         </div>
 		<!-- /Main Wrapper -->
-		
+
 @endsection
