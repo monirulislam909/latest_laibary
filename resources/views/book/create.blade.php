@@ -10,7 +10,7 @@
 							<div class="col">
 								<h3 class="page-title">Book Form</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="{{ route('book.index') }}">Dashboard</a></li>
 									<li class="breadcrumb-item active">Book Form</li>
 								</ul>
 							</div>

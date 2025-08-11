@@ -41,12 +41,7 @@ class StudentController extends Controller
             "photo" => "nullable|image|mimes:jpg,png,jpeg,webp,gif",
 
         ]);
-        $file_name = null;
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $file_name = time() . "_" . $file->getClientOriginalName();
-            $file->move(public_path('studentPhoto'), $file_name);
-        }
+        $studentFile = $this->fileUpload($request->file('photo'), "studentPhoto/");
 
         DB::table('students')->insert([
             "name" => $request->name,
@@ -54,7 +49,7 @@ class StudentController extends Controller
             "phone" => $request->phone,
             "address" => $request->address,
             "student_id" => $request->student_id,
-            "photo" => $file_name,
+            "photo" => $studentFile,
             "created_at" => now()
         ]);
         return redirect()->back()->with('success', 'Student created successfully');

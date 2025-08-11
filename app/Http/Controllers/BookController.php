@@ -40,13 +40,7 @@ class BookController extends Controller
             "available_copy" => "required|integer",
             "cover" => "nullable|image",
         ]);
-        $file_name = null;
-        if ($request->hasFile('cover')) {
-            $file = $request->file('cover');
-            $file_name = time() . "_" . $file->getClientOriginalName();
-
-            $file->move(public_path('bookPhoto'), $file_name);
-        }
+        $book_name = $this->fileUpload($request->file('cover'), 'bookPhoto/');
 
         DB::table('books')->insert([
 
@@ -55,7 +49,7 @@ class BookController extends Controller
             "isbn" => $request->isbn,
             "copies" => $request->copies,
             "available_copy" => $request->available_copy,
-            "cover" => $file_name,
+            "cover" => $book_name,
             "created_at" => now(),
 
         ]);

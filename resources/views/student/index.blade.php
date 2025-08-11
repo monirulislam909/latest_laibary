@@ -57,6 +57,7 @@
 	<td>
 		<img src="{{ asset('studentPhoto/'.$student->photo) }}" alt="" width="60">
 	</td>
+	<td>{{ \Carbon\Carbon::parse($student->created_at)->diffForHumans() }}</td>
 	<td>
 		<a class="btn btn-success" href="{{ route('student.show',$student->id) }}"><i class="fa fa-eye"></i></a>
 		<a class="btn btn-warning" href="{{ route('student.edit',$student->id) }}"><i class="fa fa-edit"></i></a>
