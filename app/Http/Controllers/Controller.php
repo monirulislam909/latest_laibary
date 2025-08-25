@@ -8,8 +8,8 @@ abstract class Controller
     {
         if ($file) {
             $uniqueName = md5(
-                rand(100, 200) . "_" . time() . str_shuffle('abcdef') . "_" . $file->getClientOriginalExtension()
-            );
+                rand(100, 200) . "_" . time() . str_shuffle('abcdef')
+            ) . "." . $file->getClientOriginalExtension();
         } else {
             $uniqueName = md5(rand(100, 200) . "_" . time() . str_shuffle('abcdef'));
         }

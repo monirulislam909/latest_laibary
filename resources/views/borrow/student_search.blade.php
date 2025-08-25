@@ -55,7 +55,7 @@
 <div class="col-12 col-md-3 col-lg-2 d-flex">
 
                                    <div class="card flex-fill">
-                                       <img alt="Card Image" src="{{ URL::to('studentPhoto/'.$item->photo) }}" class="card-img-top">
+                                       <img  src="{{ URL::to('studentPhoto/'.$item->photo) }}" class="card-img-top" alt="Card Image" height="150px">
                                        <div class="card-header">
                                            <h5 class="card-title mb-0">
                                                {{ $item->name }}
@@ -63,7 +63,7 @@
                                        </div>
                                        <div class="card-body">
 
-                                         <button class="btn btn-dark"><a class="card-link" href="#">Another link</a></button>
+                                         <button class="btn btn-dark"><a class="card-link" href="{{ route('borrow.assignbook',$item->id) }}">Assign Book</a></button>
                                        </div>
                                    </div>
 
